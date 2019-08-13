@@ -13,7 +13,7 @@ Event.destroy_all
 Attendance.destroy_all
 
 i = 1
-20.times do |user|
+3.times do |user|
   User.create!(
                first_name: Faker::Name.first_name,
                last_name: Faker::Name.last_name,
@@ -24,22 +24,23 @@ i = 1
 end
 
 i = 1
-20.times do |event|
+3.times do |event|
   Event.create!(
                 title: "Mon super event #{i}",
                 description: "La description super géniale de mon super event #{i}",
                 price: rand(1...1000),
                 location: Faker::Address.city,
                 start_date: Faker::Date.forward,
-                duration: 5 * rand(1..120))
+                duration: 5 * rand(1..120),
+                admin_id: User.all.sample.id)
   i+=1
 end
 
-50.times do |attendance|
+4.times do |attendance|
   Attendance.create!(
                      stripe_customer_id: Faker::Lorem.characters,
                      event_id: Event.all.sample.id,
-                     user_id: User.all.sample.id)
+                     participant_id: User.all.sample.id)
 end
 
 puts "Success"
