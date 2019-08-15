@@ -19,7 +19,7 @@ i = 1
                last_name: Faker::Name.last_name,
                description: Faker::ChuckNorris.fact,
                email: "claire#{i}@yopmail.com",
-               encrypted_password: Faker::Lorem.characters)
+               password: "rakoto#{i}")
   i+=1
 end
 
